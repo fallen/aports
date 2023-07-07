@@ -254,7 +254,7 @@ source="https://github.com/kalray/gcc/archive/refs/tags/v4.13.0-rc5.tar.gz
 	"
 
 # we build out-of-tree
-_gccdir="$srcdir"/gcc-${_pkgbase%%.*}-$_pkgsnap
+_gccdir="$srcdir"/"gcc-4.13.0-rc5"
 _gcclibdir="/usr/lib/gcc/$CTARGET/${_pkgbase:-$pkgver}"
 _gcclibexec="/usr/libexec/gcc/$CTARGET/${_pkgbase:-$pkgver}"
 
