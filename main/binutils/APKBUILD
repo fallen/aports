@@ -70,7 +70,7 @@ build() {
 		_gold_configure="--enable-gold"
 	fi
 
-	if [ "$CTARGET8ARCH" = "kvx" ]; then
+	if [ "$CTARGET_ARCH" = "kvx" ]; then
 		_disable_gdb="--disable-gdb"
 	fi
 
