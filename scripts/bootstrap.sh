@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -e
+set -x
 
 TARGET_ARCH="$1"
 SUDO_APK=abuild-apk
