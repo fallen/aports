@@ -1,7 +1,7 @@
 # Contributor: Ariadne Conill <ariadne@dereferenced.org>
 # Maintainer: Timo Teräs <timo.teras@iki.fi>
 pkgname=musl
-pkgver=1.2.4
+pkgver=1.2.3
 pkgrel=2
 pkgdesc="the musl c library (libc) implementation"
 url="https://musl.libc.org/"
@@ -18,8 +18,8 @@ nocc)	pkgname="musl-dev"; subpackages="";;
 nolibc) ;;
 *)	subpackages="$subpackages $pkgname-utils";;
 esac
-_commit="1.2.4"
-source="musl-$_commit.tar.gz::https://git.musl-libc.org/cgit/musl/snapshot/$_commit.tar.gz
+_commit="1.2.3"
+source="https://github.com/kalray/musl/archive/refs/tags/ACB-4.13.0-rc5.tar.gz
 	handle-aux-at_base.patch
 	lfs64.patch
 	lfs64-2.patch
@@ -89,6 +89,7 @@ package() {
 	mips64*)	ARCH="mips64" ;;
 	mips*)		ARCH="mips" ;;
 	riscv64)	ARCH="riscv64" ;;
+	kvx)		ARCH="kvx" ;;
 	esac
 
 	if [ "$BOOTSTRAP" = "nocc" ]; then
@@ -143,7 +144,7 @@ libintl() {
 }
 
 sha512sums="
-25fe4004424fe1c26106a71caf5f832833d5d4ebac1399f6d776657a03ba49605f17aedee2ffb25527808de665a8cea02b8c8ae2de065c4e009ef26b324d031e  musl-1.2.4.tar.gz
+69977e2215e1f54d46a787a43dbfe38a4e5132269a250d029747aba45687625336611ac9338f5ab18a8a1d28ffa8f2cfa2356aa79b25d7889820d111d534ceeb  ACB-4.13.0-rc5.tar.gz
 a76f79b801497ad994746cf82bb6eaf86f9e1ae646e6819fbae8532a7f4eee53a96ac1d4e789ec8f66aea2a68027b0597f7a579b3369e01258da8accfce41370  handle-aux-at_base.patch
 6360a9efa57ae14c25d097b9ff45bd3891e02c01f6124e3810a09e42db9820eea4ef0622937fc680c61d0c0c08a40f241c16b6abdc6ae0b376a163ebe82503f3  lfs64.patch
 7ad5704c5063a9f14c99b598227c46f02ca69574d9779656f701321d007f5f19c1321389917c6653cf0900851efc1662213a022fb08afb939242fa2f4be1e724  lfs64-2.patch
