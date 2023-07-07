@@ -10,11 +10,10 @@ makedepends_host="zlib-dev"
 arch="all"
 license="GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause"
 subpackages="$pkgname-dev $pkgname-doc"
-source="https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz
+source="https://github.com/kalray/binutils/archive/refs/tags/v4.13.0-rc5.tar.gz
 	0001-Revert-PR25882-.gnu.attributes-are-not-checked-for-s.patch
 	CVE-2023-1972.patch
 	binutils-ld-fix-static-linking.patch
-	riscv64-textrels.patch
 	"
 builddir="$srcdir/$pkgname-$pkgver"
 
