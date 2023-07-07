@@ -58,6 +58,7 @@ build() {
 	local _arch_configure=""
 	local _gold_configure="--disable-gold"
 	local _plugin_configure="--enable-plugins"
+	local _disable_gdb=""
 
 	if [ "$CHOST" != "$CTARGET" ]; then
 		_sysroot="$CBUILDROOT"
@@ -67,6 +68,10 @@ build() {
 
 	if [ "$CHOST" = "$CBUILD" ] && [ "$CBUILD" = "$CTARGET" ] && [ "$CTARGET_ARCH" != "riscv64" ]; then
 		_gold_configure="--enable-gold"
+	fi
+
+	if [ "$CTARGET8ARCH" = "kvx" ]; then
+		_disable_gdb="--disable-gdb"
 	fi
 
 	if [ "$CTARGET_ARCH" = "x86_64" ]; then
@@ -94,6 +99,7 @@ build() {
 		$_gold_configure \
 		$_plugin_configure \
 		$_noboot_configure \
+		$_disable_gdb \
 		--disable-gprofng \
 		--disable-multilib \
 		--disable-nls \
