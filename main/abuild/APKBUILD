@@ -37,7 +37,8 @@ subpackages="
 	"
 options="suid"
 pkggroups="abuild"
-source="https://gitlab.alpinelinux.org/alpine/abuild/-/archive/$pkgver/abuild-$pkgver.tar.gz"
+source="https://gitlab.alpinelinux.org/alpine/abuild/-/archive/$pkgver/abuild-$pkgver.tar.gz
+0001-Add-support-for-kvx-arch.patch"
 builddir="$srcdir"/abuild-$pkgver
 
 build() {
@@ -112,5 +113,6 @@ _rootbld() {
 }
 
 sha512sums="
+2684b8d1de0a1f120fe3deb987f389b6ac49fd4fbf666c346eaeaa69dcb6a45741345b61104d2163ddde61ae71d97783914acd56397388ada7e3fe37455add4a  0001-Add-support-for-kvx-arch.patch
 494045a023420e7d52cbacd3b5ada1510e1def89107004b88a4a9cb16b6455e7195592abef996fee57bfaf3e2b80d8422fc96b7da39e07f4cd3fb72becfaa6c7  abuild-3.11.20.tar.gz
 "

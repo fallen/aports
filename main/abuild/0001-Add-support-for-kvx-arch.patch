@@ -1,0 +1,32 @@
+From 971819d51f1fbbdafa0405fc700bae1e1e8e491c Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Fri, 7 Jul 2023 19:19:00 +0200
+Subject: [PATCH] Add support for kvx arch
+
+---
+ functions.sh.in | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/functions.sh.in b/functions.sh.in
+index 4d029f8..bcccd33 100644
+--- a/functions.sh.in
++++ b/functions.sh.in
+@@ -25,6 +25,7 @@ arch_to_hostspec() {
+ 	s390x)		echo "s390x-alpine-linux-musl" ;;
+ 	x86)		echo "i586-alpine-linux-musl" ;;
+ 	x86_64)		echo "x86_64-alpine-linux-musl" ;;
++	kvx)		echo "kvx-alpine-linux-musl" ;;
+ 	*)		echo "unknown" ;;
+ 	esac
+ }
+@@ -50,6 +51,7 @@ hostspec_to_arch() {
+ 	riscv64-*-*-*)		echo "riscv64" ;;
+ 	s390x-*-*-*)		echo "s390x" ;;
+ 	x86_64-*-*-*)		echo "x86_64" ;;
++	kvx-*-*-*)		echo "kvx" ;;
+ 	*)			echo "unknown" ;;
+ 	esac
+ }
+-- 
+2.34.1
+
