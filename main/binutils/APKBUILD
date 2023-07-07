@@ -1,7 +1,8 @@
 # Contributor: Natanael Copa <ncopa@alpinelinux.org>
 # Maintainer: Ariadne Conill <ariadne@dereferenced.org>
 pkgname=binutils
-pkgver=4.13.0-rc5
+pkgver=4.13.0
+rc=5
 pkgrel=12
 pkgdesc="Tools necessary to build programs"
 url="https://www.gnu.org/software/binutils/"
@@ -15,7 +16,7 @@ source="https://github.com/kalray/binutils/archive/refs/tags/v4.13.0-rc5.tar.gz
 	CVE-2023-1972.patch
 	binutils-ld-fix-static-linking.patch
 	"
-builddir="$srcdir/$pkgname-$pkgver"
+builddir="$srcdir/$pkgname-$pkgver-rc$rc"
 
 if [ -z "$BOOTSTRAP" ]; then
 	makedepends_host="$makedepends_host jansson-dev zstd-dev"
