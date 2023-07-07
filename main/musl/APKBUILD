@@ -39,7 +39,7 @@ source="https://github.com/kalray/musl/archive/refs/tags/ACB-4.13.0-rc5.tar.gz
 #   1.1.15-r4:
 #     - CVE-2016-8859
 
-builddir="$srcdir"/$_commit
+builddir="$srcdir"/"musl-ACB-4.13.0-rc5"
 
 prepare() {
 	default_prepare
