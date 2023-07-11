@@ -217,7 +217,7 @@ makedepends="$makedepends_build $makedepends_host"
 # PLEASE submit all patches to gcc to https://gitlab.alpinelinux.org/kaniini/alpine-gcc-patches,
 # so that they can be properly tracked and easily rebased if needed.
 # source="https://dev.alpinelinux.org/archive/gcc/${_pkgbase%%.*}-$_pkgsnap/gcc-${_pkgbase%%.*}-$_pkgsnap.tar.xz
-source="https://github.com/kalray/gcc/archive/refs/tags/v4.13.0-rc5.tar.gz
+source="https://github.com/kalray/gcc/archive/2b772d878ea404f20ea94f43db8eceb0196d7fa7.zip
 	0001-posix_memalign.patch
 	0002-gcc-poison-system-directories.patch
 	0003-specs-turn-on-Wl-z-now-by-default.patch
@@ -768,7 +768,7 @@ gdb() {
 }
 
 sha512sums="
-d94f5103cd8641d0d9c86b3d50ba8f43ff523ba477818d66740aad8dbeb62f9b4c2b7af2854a403b5219054e0f266f06dc6d79c64f48419dc8b6571702ebb32a  v4.13.0-rc5.tar.gz
+e041e1b8b6ff2d91b36b19277fa99440f4c97110af2091ea24e2820fabd1904eb8ac62457bf45566dd7057de33521d20afc1f73f4a8c466ae824a012010134ff  2b772d878ea404f20ea94f43db8eceb0196d7fa7.zip
 5738a25e510d47058ea7acf44f47292c365f74f60f75d600c3bdf79022a78e3c14c87648e23d3f44612833123ba1ae6776c8a6ea4371bf8c2cf31ea8296a0278  0001-posix_memalign.patch
 35cba990b41ba8fd2544404a0330ceddfbc7b63475f4ebb515552d5ec494d0099f0585240a36099431ae6dcaf9bd7674ca0224f0dd4310cd3597aabadedd1d07  0002-gcc-poison-system-directories.patch
 fa3b349be7e7f49c1d2192a84d6fc6b9f9b750381607711950d3ad5c867c677dac65dc2274fa4227aa6909d6b5e0fcc59b137254202035e930a2c6a0ba494e2f  0003-specs-turn-on-Wl-z-now-by-default.patch
