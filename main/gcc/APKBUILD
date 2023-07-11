@@ -3,6 +3,7 @@
 # Maintainer: Ariadne Conill <ariadne@dereferenced.org>
 pkgname=gcc
 pkgver=12.2.0_git20230701
+sha1="2b772d878ea404f20ea94f43db8eceb0196d7fa7"
 # i.e. 13.1.1, must match gcc/BASE-VER
 _pkgbase="${pkgver%%_git*}"
 # date component from snapshots
@@ -254,7 +255,7 @@ source="https://github.com/kalray/gcc/archive/2b772d878ea404f20ea94f43db8eceb019
 	"
 
 # we build out-of-tree
-_gccdir="$srcdir"/"gcc-4.13.0-rc5"
+_gccdir="$srcdir"/"gcc-$sha1"
 _gcclibdir="/usr/lib/gcc/$CTARGET/${_pkgbase:-$pkgver}"
 _gcclibexec="/usr/libexec/gcc/$CTARGET/${_pkgbase:-$pkgver}"
 
