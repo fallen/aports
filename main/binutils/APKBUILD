@@ -4,6 +4,7 @@ pkgname=binutils
 pkgver=4.13.0
 rc=5
 pkgrel=12
+sha1="80a59a7d6f6f6d07412650551121649aba759a2f"
 pkgdesc="Tools necessary to build programs"
 url="https://www.gnu.org/software/binutils/"
 makedepends_build="bison flex texinfo"
@@ -16,7 +17,7 @@ source="https://github.com/kalray/binutils/archive/80a59a7d6f6f6d074126505511216
 	CVE-2023-1972.patch
 	binutils-ld-fix-static-linking.patch
 	"
-builddir="$srcdir/$pkgname-$pkgver-rc$rc"
+builddir="$srcdir/$pkgname-$sha1"
 
 if [ -z "$BOOTSTRAP" ]; then
 	makedepends_host="$makedepends_host jansson-dev zstd-dev"
