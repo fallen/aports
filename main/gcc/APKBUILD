@@ -248,7 +248,7 @@ source="https://github.com/kalray/gcc/archive/2b772d878ea404f20ea94f43db8eceb019
 	0031-druntime-link-against-libucontext-on-all-platforms.patch
 	0032-libgnat-time_t-is-always-64-bit-on-musl-libc.patch
 	0033-libphobos-do-not-use-LFS64-symbols.patch
-	00034-kvx-fix-format-security-errors.patch
+	0034-kvx-fix-format-security-errors.patch
 	"
 
 # we build out-of-tree
