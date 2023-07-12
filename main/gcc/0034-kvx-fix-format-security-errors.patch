@@ -1,0 +1,67 @@
+diff --git a/gcc/config/kvx/kvx.cc b/gcc/config/kvx/kvx.cc
+index ec7284490c8..8212508a5c0 100644
+--- a/gcc/config/kvx/kvx.cc
++++ b/gcc/config/kvx/kvx.cc
+@@ -6740,7 +6740,7 @@ kvx_addr_space_legitimize_address (rtx x, rtx oldx, machine_mode mode,
+                   addr_space_t as)
+ {
+   if (as == KVX_ADDR_SPACE_CONVERT)
+-    error ("__convert should be used only in explicit pointer casting");
++    error ("%<__convert%> should be used only in explicit pointer casting");
+ 
+   return kvx_legitimize_address (x, oldx, mode);
+ }
+@@ -6768,7 +6768,7 @@ kvx_addr_space_convert (rtx op, tree from_type, tree to_type ATTRIBUTE_UNUSED)
+         ? "Implicit conversion from uncached pointer to cached one"
+         : "Implicit conversion from cached pointer to uncached one");
+       inform (input_location,
+-         "Use (__convert <type> *) to acknowledge this conversion");
++         "Use %<(__convert <type> *)%> to acknowledge this conversion");
+     }
+   return op;
+ }
+@@ -8013,7 +8013,7 @@ kvx_handle_fixed_reg_option (const char *arg)
+ 
+   if (first_reg < 0)
+     {
+-      error ("Unknown register %s passed to -ffixed-reg.", arg);
++      error ("Unknown register %<%s%> passed to %<-ffixed-reg%>", arg);
+       return false;
+     }
+ 
+@@ -8027,7 +8027,7 @@ kvx_handle_fixed_reg_option (const char *arg)
+      }
+       if (last_reg < 0)
+    {
+-     error ("Unknown register %s passed to -ffixed-reg.", dash + 1);
++     error ("Unknown register %<%s%> passed to %<-ffixed-reg%>", dash + 1);
+      return false;
+    }
+     }
+@@ -8058,7 +8058,7 @@ kvx_handle_stack_limit_symbol_option (const char *arg)
+       /* Only allow $sr as stack-limit register */
+       if (strncmp (arg, "__cos_stack_limit", 17))
+    {
+-     error ("only `__cos_stack_limit' can be used as stack-limit symbol");
++     error ("only %<__cos_stack_limit%> can be used as stack-limit symbol");
+    }
+       else
+    {
+@@ -8071,7 +8071,7 @@ kvx_handle_stack_limit_symbol_option (const char *arg)
+     }
+   else
+     {
+-      error ("-fstack-limit-* is not supported.");
++      error ("%<-fstack-limit-*%> is not supported");
+     }
+ 
+   return false;
+@@ -8101,7 +8101,7 @@ kvx_handle_stack_limit_register_option (const char *arg)
+     }
+   else
+     {
+-      error ("-fstack-limit-* is not supported.");
++      error ("%<-fstack-limit-*%> is not supported");
+     }
+ 
+   return false;
