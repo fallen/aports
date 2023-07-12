@@ -1,14 +1,14 @@
-From 236a7d6257ce931b50044914b52520ad8a4e0b91 Mon Sep 17 00:00:00 2001
+From 13a5304384c4c4c8dc044081ef624f0a027b9634 Mon Sep 17 00:00:00 2001
 From: Yann Sionneau <ysionneau@kalray.eu>
 Date: Wed, 12 Jul 2023 19:51:29 +0200
 Subject: [PATCH] string format fixes
 
 ---
- gcc/config/kvx/kvx.cc | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ gcc/config/kvx/kvx.cc | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/gcc/config/kvx/kvx.cc b/gcc/config/kvx/kvx.cc
-index 3a1dba70c..b6a783482 100644
+index 3a1dba70c..0af65030d 100644
 --- a/gcc/config/kvx/kvx.cc
 +++ b/gcc/config/kvx/kvx.cc
 @@ -6736,7 +6736,7 @@ kvx_addr_space_legitimize_address (rtx x, rtx oldx, machine_mode mode,
@@ -47,6 +47,15 @@ index 3a1dba70c..b6a783482 100644
  	  return false;
  	}
      }
+@@ -8034,7 +8034,7 @@ kvx_handle_fixed_reg_option (const char *arg)
+ 
+   if (first_reg > last_reg)
+     {
+-      error ("Invalid range passed to -ffixed-reg.");
++      error ("Invalid range passed to %<-ffixed-reg%>.");
+       return false;
+     }
+ 
 @@ -8054,7 +8054,7 @@ kvx_handle_stack_limit_symbol_option (const char *arg)
        /* Only allow $sr as stack-limit register */
        if (strncmp (arg, "__cos_stack_limit", 17))
