@@ -34,6 +34,10 @@ if [ "$CHOST" != "$CTARGET" ]; then
 	sonameprefix="$pkgname:"
 fi
 
+if [ "$CTARGET_ARCH" = "kvx" ]; then
+	options="$options !strip"
+fi
+
 # secfixes:
 #   2.40-r10:
 #     - CVE-2023-1972
@@ -76,7 +80,6 @@ build() {
 		CFLAGS="$CFLAGS -O0 -g"
 		CXXFLAGS="$CXXFLAGS -O0 -g"
 		CPPFLAGS="$CPPFLAGS -DDEBUG"
-		options="$options !strip"
 	fi
 
 	if [ "$CTARGET_ARCH" = "x86_64" ]; then
