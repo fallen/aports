@@ -1,0 +1,39 @@
+From 5b59f120718b5bc87d19b851e43fe6a4a1ae7bfb Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Sun, 16 Jul 2023 18:19:11 +0200
+Subject: [PATCH] op_compar that works better with musl qsort
+
+---
+ gas/config/tc-kvx.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/gas/config/tc-kvx.c b/gas/config/tc-kvx.c
+index ea656def..2d168958 100644
+--- a/gas/config/tc-kvx.c
++++ b/gas/config/tc-kvx.c
+@@ -2570,7 +2570,21 @@ kvxop_compar (const void *a, const void *b)
+ {
+   const kvxopc_t *opa = (const kvxopc_t *) a;
+   const kvxopc_t *opb = (const kvxopc_t *) b;
+-  return strcmp (opa->as_op, opb->as_op);
++  int res = strcmp (opa->as_op, opb->as_op);
++  if (res)
++    return res;
++  else
++    {
++      int i = 0;
++
++      while (opa->format[i] && opb->format[i])
++        {
++          if (opa->format[i]->width != opb->format[i]->width)
++            return opa->format[i]->width - opb->format[i]->width;
++          ++i;
++        }
++      return 0;
++    }
+ }
+ 
+ /***************************************************/
+-- 
+2.34.1
+
