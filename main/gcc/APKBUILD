@@ -169,6 +169,11 @@ kvx)
 LANG_ADA=false;;
 esac
 
+case "$CTARGET_ARCH" in
+kvx)
+LANG_ADA=false;;
+esac
+
 _languages=c
 if $LANG_CXX; then
 	subpackages="$subpackages libstdc++:libcxx:$CTARGET_ARCH libstdc++-dev$_target:libcxx_dev g++$_target:gpp"
