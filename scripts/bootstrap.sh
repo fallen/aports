@@ -115,6 +115,10 @@ if [ "$TARGET_ARCH" = "riscv64" ]; then
 	NEEDS_LIBATOMIC="yes"
 fi
 
+if [ "$TARGET_ARCH" = "kvx" ]; then
+	NEEDS_LIBATOMIC="yes"
+fi
+
 for PKG in fortify-headers linux-headers musl libc-dev pkgconf zlib \
 	   openssl ca-certificates libmd \
 	   gmp mpfr4 mpc1 isl26 libucontext zstd binutils gcc \
