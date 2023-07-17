@@ -11,6 +11,7 @@ provides="pkgconfig=1"
 checkdepends="kyua atf"
 subpackages="$pkgname-doc $pkgname-dev"
 source="https://distfiles.ariadne.space/pkgconf/pkgconf-$pkgver.tar.xz
+	0001-config.sub-add-support-for-kvx-arch.patch
 	"
 
 # secfixes:
@@ -52,4 +53,5 @@ dev() {
 
 sha512sums="
 604853d8bb1c3ca14e696f83ac5b161e2592defb921d53e1c16cc949d4b9ecac2b12983c1fbbb3c89898323bda18c8749bff3946e049c8305a1a39a773265f09  pkgconf-1.9.5.tar.xz
+9f93d58a3040d3d76c881e422e02b7a8b67d28f8600b268f7d1ecf9316f1ce803dd46b2adaeba47d3f0bd43892784f2a2bae90f5b2f2216b34a67c0372433098  0001-config.sub-add-support-for-kvx-arch.patch
 "

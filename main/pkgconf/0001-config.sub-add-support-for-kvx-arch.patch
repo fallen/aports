@@ -1,0 +1,24 @@
+From 7d7d8e8069ca13815e4d0c5311c1781dcf5105a3 Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Mon, 17 Jul 2023 12:52:08 +0200
+Subject: [PATCH] config.sub: add support for kvx arch
+
+---
+ config.sub | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/config.sub b/config.sub
+index 9b62e37..e0dcd01 100755
+--- a/config.sub
++++ b/config.sub
+@@ -1205,6 +1205,7 @@ case $cpu-$vendor in
+ 			| i370 | i*86 | i860 | i960 | ia16 | ia64 \
+ 			| ip2k | iq2000 \
+ 			| k1om \
++			| kvx \
+ 			| le32 | le64 \
+ 			| lm32 \
+ 			| loongarch32 | loongarch64 | loongarchx32 \
+-- 
+2.34.1
+
