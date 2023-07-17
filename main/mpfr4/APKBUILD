@@ -26,6 +26,11 @@ builddir="$srcdir/mpfr-$pkgver"
 provides="mpfr=$pkgver-r$pkgrel"
 replaces="mpfr"
 
+prepare() {
+	default_prepare
+	update_config_sub
+}
+
 build() {
 	./configure \
 		--build=$CBUILD \

@@ -22,6 +22,7 @@ prepare() {
 	default_prepare
 	# force update to libtool with fixed cross-build support
 	autoreconf -vif
+	update_config_sub
 }
 
 build() {
