@@ -1,0 +1,24 @@
+From d688335ab0febbfeaaa07cf22911c751d70943a6 Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Mon, 17 Jul 2023 13:26:13 +0200
+Subject: [PATCH] libmd: add support for kvx arch
+
+---
+ build-aux/config.sub | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/build-aux/config.sub b/build-aux/config.sub
+index dba16e8..5cdd42f 100755
+--- a/build-aux/config.sub
++++ b/build-aux/config.sub
+@@ -1205,6 +1205,7 @@ case $cpu-$vendor in
+ 			| i370 | i*86 | i860 | i960 | ia16 | ia64 \
+ 			| ip2k | iq2000 \
+ 			| k1om \
++			| kvx \
+ 			| le32 | le64 \
+ 			| lm32 \
+ 			| loongarch32 | loongarch64 | loongarchx32 \
+-- 
+2.34.1
+

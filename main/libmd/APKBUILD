@@ -8,7 +8,10 @@ url="https://www.hadrons.org/software/libmd/"
 arch="all"
 license="BSD-3-Clause AND BSD-2-Clause AND ISC AND Beerware AND Public Domain"
 subpackages="$pkgname-dev $pkgname-doc"
-source="https://archive.hadrons.org/software/libmd/libmd-$pkgver.tar.xz"
+source="
+	https://archive.hadrons.org/software/libmd/libmd-$pkgver.tar.xz
+	0001-libmd-add-support-for-kvx-arch.patch
+"
 
 build() {
 	./configure \
@@ -33,4 +36,5 @@ package() {
 
 sha512sums="
 5d0da3337038e474fae7377bbc646d17214e72dc848a7aadc157f49333ce7b5ac1456e45d13674bd410ea08477c6115fc4282fed6c8e6a0bf63537a418c0df96  libmd-1.1.0.tar.xz
+5e80d1a8d891b5d74ad1db23699b90b99126daa019cfd24b9d3e6193b8318869e5a5c459e8b96afde781db96381383da1109baf27a1329e0b9581ef1369e2c59  0001-libmd-add-support-for-kvx-arch.patch
 "
