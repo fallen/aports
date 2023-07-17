@@ -550,7 +550,6 @@ libcxx_dev() {
 	replaces="g++"
 
 	amove usr/${_target:+$CTARGET/}lib/libstdc++.a \
-		usr/${_target:+$CTARGET/}lib/libstdc++exp.a \
 		usr/${_target:+$CTARGET/}lib/libstdc++.so \
 		usr/${_target:+$CTARGET/}lib/libstdc++fs.a \
 		usr/${_target:+$CTARGET/}lib/libsupc++.a \
