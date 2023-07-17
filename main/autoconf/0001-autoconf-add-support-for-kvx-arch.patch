@@ -1,0 +1,35 @@
+From 70c443a8ea99048daf5b5dee945ee38a943936bb Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Mon, 17 Jul 2023 17:25:39 +0200
+Subject: [PATCH] autoconf: add support for kvx arch
+
+
+diff --git a/build-aux/config.guess b/build-aux/config.guess
+index 1972fda..6560d3d 100755
+--- a/build-aux/config.guess
++++ b/build-aux/config.guess
+@@ -995,6 +995,9 @@ EOF
+     k1om:Linux:*:*)
+ 	echo "$UNAME_MACHINE"-unknown-linux-"$LIBC"
+ 	exit ;;
++    kvx:Linux:*:*)
++	echo "$UNAME_MACHINE"-unknown-linux-"$LIBC"
++	exit ;;
+     loongarch32:Linux:*:* | loongarch64:Linux:*:* | loongarchx32:Linux:*:*)
+ 	echo "$UNAME_MACHINE"-unknown-linux-"$LIBC"
+ 	exit ;;
+diff --git a/build-aux/config.sub b/build-aux/config.sub
+index 63c1f1c..118e518 100755
+--- a/build-aux/config.sub
++++ b/build-aux/config.sub
+@@ -1183,6 +1183,7 @@ case $cpu-$vendor in
+ 			| i370 | i*86 | i860 | i960 | ia16 | ia64 \
+ 			| ip2k | iq2000 \
+ 			| k1om \
++			| kvx \
+ 			| le32 | le64 \
+ 			| lm32 \
+ 			| loongarch32 | loongarch64 | loongarchx32 \
+-- 
+2.34.1
+
