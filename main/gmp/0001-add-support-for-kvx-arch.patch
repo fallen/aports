@@ -1,0 +1,24 @@
+From 639678d151a7ff3377eff934bbe550a89751cd7b Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Mon, 17 Jul 2023 13:35:32 +0200
+Subject: [PATCH] add support for kvx arch
+
+---
+ configfsf.sub | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configfsf.sub b/configfsf.sub
+index 8167d08..6057511 100755
+--- a/configfsf.sub
++++ b/configfsf.sub
+@@ -1183,6 +1183,7 @@ case $cpu-$vendor in
+ 			| i370 | i*86 | i860 | i960 | ia16 | ia64 \
+ 			| ip2k | iq2000 \
+ 			| k1om \
++			| kvx \
+ 			| le32 | le64 \
+ 			| lm32 \
+ 			| m32c | m32r | m32rle \
+-- 
+2.34.1
+
