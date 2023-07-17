@@ -1,12 +1,40 @@
-From 971819d51f1fbbdafa0405fc700bae1e1e8e491c Mon Sep 17 00:00:00 2001
+From 1e6fe38e300c3b670e38ade57dea714070366cef Mon Sep 17 00:00:00 2001
 From: Yann Sionneau <ysionneau@kalray.eu>
 Date: Fri, 7 Jul 2023 19:19:00 +0200
 Subject: [PATCH] Add support for kvx arch
 
 ---
+ config.guess    | 3 +++
+ config.sub      | 1 +
  functions.sh.in | 2 ++
- 1 file changed, 2 insertions(+)
+ 3 files changed, 6 insertions(+)
 
+diff --git a/config.guess b/config.guess
+index e81d3ae..2795556 100644
+--- a/config.guess
++++ b/config.guess
+@@ -1033,6 +1033,9 @@ EOF
+     k1om:Linux:*:*)
+ 	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
+ 	;;
++    kvx:Linux:*:*)
++	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
++	;;
+     loongarch32:Linux:*:* | loongarch64:Linux:*:* | loongarchx32:Linux:*:*)
+ 	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
+ 	;;
+diff --git a/config.sub b/config.sub
+index d74fb6d..cc94e11 100644
+--- a/config.sub
++++ b/config.sub
+@@ -1200,6 +1200,7 @@ case $cpu-$vendor in
+ 			| i370 | i*86 | i860 | i960 | ia16 | ia64 \
+ 			| ip2k | iq2000 \
+ 			| k1om \
++			| kvx \
+ 			| le32 | le64 \
+ 			| lm32 \
+ 			| loongarch32 | loongarch64 | loongarchx32 \
 diff --git a/functions.sh.in b/functions.sh.in
 index 4d029f8..bcccd33 100644
 --- a/functions.sh.in
