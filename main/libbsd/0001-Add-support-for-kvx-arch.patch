@@ -1,0 +1,38 @@
+From 5087880a0a8b550b35818d0132dfb315c4173dbf Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Fri, 21 Jul 2023 08:28:00 +0200
+Subject: [PATCH] Add support for kvx arch
+
+---
+ src/local-elf.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/local-elf.h b/src/local-elf.h
+index 8c4794f..79590c5 100644
+--- a/src/local-elf.h
++++ b/src/local-elf.h
+@@ -29,6 +29,8 @@
+ 
+ #include <elf.h>
+ 
++#define EM_KVX 256
++
+ #define IS_ELF(ehdr) \
+ 	((ehdr).e_ident[EI_MAG0] == ELFMAG0 && \
+ 	 (ehdr).e_ident[EI_MAG1] == ELFMAG1 && \
+@@ -134,6 +136,12 @@
+ #endif
+ #define ELF_TARG_DATA	ELFDATA2LSB
+ 
++#elif defined(__kvx__)
++
++#define ELF_TARG_MACH	EM_KVX
++#define ELF_TARG_CLASS	ELFCLASS64
++#define ELF_TARG_DATA	ELFDATA2LSB
++
+ #elif defined(__m32r__)
+ 
+ #define ELF_TARG_MACH	EM_M32R
+-- 
+2.34.1
+

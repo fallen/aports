@@ -13,6 +13,7 @@ makedepends_build="autoconf automake libtool"
 makedepends_host="$depends_dev"
 subpackages="$pkgname-static $pkgname-dev $pkgname-doc"
 source="https://libbsd.freedesktop.org/releases/libbsd-$pkgver.tar.xz
+	0001-Add-support-for-kvx-arch.patch
 	lfs64.patch
 	"
 
@@ -24,6 +25,7 @@ prepare() {
 	default_prepare
 
 	./autogen
+	update_config_sub
 }
 
 build() {
@@ -54,4 +56,5 @@ dev() {
 sha512sums="
 51fda4724f41dd8a4628afd58c21236a7588d9045e337e06eeabf83805a9aaaa53705441ca901ad11f1c65f18e881523bdc97721a7d3d6a5cced27f2450d09a2  libbsd-0.11.7.tar.xz
 4bf1c9ce7fd06bc9304010dc4c4a84ba64e4f85c1b65b4e6b4886016ac0d8412f1f4073a67c11d970f0e78ebe38f0969c86b6e68f0c39390870b6e77320f76be  lfs64.patch
+54dc871a77f157d9aacfcd944ef193f5745728f060f3dce441f953bd9eb58aeeafa5355def6e628eb5ae1ca0f4b00800c4d92e2719bc466a5d52949cd75239a0  0001-Add-support-for-kvx-arch.patch
 "
