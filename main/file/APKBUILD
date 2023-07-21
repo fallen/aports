@@ -24,6 +24,11 @@ builddir="$srcdir/$pkgname-FILE${pkgver/./_}"
 #     - CVE-2019-8906
 #     - CVE-2019-8907
 
+prepare() {
+	default_prepare
+	update_config_sub
+}
+
 build() {
 	SH_LIBTOOL='/usr/share/build-1/libtool' autoreconf -f -i
 	./configure \
