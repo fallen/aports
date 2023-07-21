@@ -1,0 +1,25 @@
+From 8347b53063ed03ad9d13322aa8ce6aafcf2fbe84 Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Fri, 21 Jul 2023 09:22:04 +0200
+Subject: [PATCH] Add support for kvx arch
+
+---
+ src/apk_defines.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/apk_defines.h b/src/apk_defines.h
+index a9c06aa..49f9114 100644
+--- a/src/apk_defines.h
++++ b/src/apk_defines.h
+@@ -126,6 +126,8 @@ extern char **apk_argv;
+ #define APK_DEFAULT_ARCH	"riscv32"
+ #elif defined(__riscv) && __riscv_xlen == 64
+ #define APK_DEFAULT_ARCH	"riscv64"
++#elif defined(__kvx__)
++#define APK_DEFAULT_ARCH	"kvx"
+ #else
+ #error APK_DEFAULT_ARCH not detected for this architecture
+ #endif
+-- 
+2.34.1
+
