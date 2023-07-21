@@ -135,6 +135,7 @@ case "$CTARGET_ARCH" in
 arm*)		_libitm=false ;;
 mips*)		_libitm=false ;;
 riscv64)	_libitm=false ;;
+kvx)		_libitm=false ;;
 esac
 
 # Internal libffi fails to build on MIPS at the moment, need to
@@ -143,10 +144,6 @@ esac
 case "$CTARGET_ARCH" in
 mips*)		LANG_GO=false ;;
 kvx)		LANG_GO=false ;;
-esac
-
-case "$CTARGET_ARCH" in
-kvx)		_libatomic=true ;;
 esac
 
 # Fortran uses libquadmath if toolchain has __float128
