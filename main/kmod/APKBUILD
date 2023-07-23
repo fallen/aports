@@ -10,7 +10,7 @@ options="!check"  # https://bugs.gentoo.org/408915#c3
 license="GPL-2.0-or-later"
 # gnu sed is needed for symlink
 makedepends_build="sed libxslt"
-makedepends_host="$depends_dev zlib-dev xz-dev zstd-dev openssl-dev>3"
+makedepends_host="$depends_dev zlib-dev xz-dev openssl-dev>3"
 makedepends="$makedepends_build $makedepends_host"
 triggers="$pkgname.trigger=/lib/modules/*"
 subpackages="
@@ -38,7 +38,6 @@ build() {
 		--with-rootlibdir=/lib \
 		--with-zlib \
 		--with-xz \
-		--with-zstd \
 		--with-openssl
 	make
 }
