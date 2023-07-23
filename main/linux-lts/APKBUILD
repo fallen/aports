@@ -18,9 +18,6 @@ options="!strip"
 _config=${config:-config-lts.${CARCH}}
 source="linux-$pkgver.tar.gz::https://github.com/kalray/linux_coolidge/archive/refs/tags/ACB-4.13.0-rc5.tar.gz
 	awk.patch
-	0001-tty-Move-sysctl-setup-into-core-tty-logic.patch
-	0002-tty-Allow-TIOCSTI-to-be-disabled.patch
-	0003-tty-Move-TIOCSTI-toggle-variable-before-kerndoc.patch
 
 	lts.aarch64.config
 	lts.armv7.config
@@ -35,6 +32,7 @@ source="linux-$pkgver.tar.gz::https://github.com/kalray/linux_coolidge/archive/r
 	virt.ppc64le.config
 	virt.x86.config
 	virt.x86_64.config
+	0001-kvx-allow-Alpine-build-system-to-build-the-kernel.patch
 	"
 subpackages="$pkgname-dev:_dev:$CBUILD_ARCH $pkgname-doc"
 for _i in $source; do
@@ -95,7 +93,7 @@ _prepareconfig() {
 
 	cp "$srcdir"/$_config "$_builddir"/.config
 	msg "Configuring $_flavor kernel ($_arch)"
-	make -C "$builddir \
+	make -C "$builddir" \
 		O="$_builddir" \
 		ARCH="$(_kernelarch $_arch)" \
 		olddefconfig
@@ -331,7 +329,7 @@ d4323576ffeb7605346673f3f1bfe97bc8da8d00afc272ae6017ba2b5d6e4170004fddec155c993a
 4653f9d1a5cf2ffa469d06e3d6b123e9bca8faf3fd68fbd91cee87371455836b7bb83c8b65b697ad147422b8d3cedbb17d7f82b4d8d473062c76d629285feb64  virt.ppc64le.config
 fe9b475b781f9fb579d3df4391e4d2e0c5055332d0aad4a63820d39ab62447f4eb41f6bd65b319c11fc60f5257b1b05b3be21b2bd9b4a150785c5c749395bd16  virt.x86.config
 fca14aab43c06238d3c7e0e95b5e133b7135b2dfa04e30ac24bbe690062f12bac6a87e66e861f996d4383df00fc28d62a8e4f0a2448b6d36a3111589a390236b  virt.x86_64.config
-cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e  lts.kvx.config
-4d5c50e32d04985dba8087886f3bfa98bec676bc4a7f90b8a96d0feb9f6602e8617ddd7ddbc84c959f0594f4aa8267819a5feef09a3a95f711341cb2a0213f6f  linux-5.16.tar.gz
+721de5e25a7601fdf0e193d7f63a34b8cea04a9fb8660539bb36eb019d260c123caf0afe7b09021897a1e193e33016ca5b6b7945bee80aa322b301e6740fd7f7  lts.kvx.config
+4d5c50e32d04985dba8087886f3bfa98bec676bc4a7f90b8a96d0feb9f6602e8617ddd7ddbc84c959f0594f4aa8267819a5feef09a3a95f711341cb2a0213f6f  linux-5.16.20.tar.gz
 ea1e36631d158ced6e21064a9e0389a6c87ba1af211e876dd1553bb0086442ab6d40e6ab42c068f763b2630c9a135596e77b614e12706ec91787a166420fa5d5  0001-kvx-allow-Alpine-build-system-to-build-the-kernel.patch
 "
