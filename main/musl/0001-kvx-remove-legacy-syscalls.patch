@@ -1,0 +1,42 @@
+From 26f92edad02606ef3596ea8e79e2811ff2bdc034 Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Sun, 23 Jul 2023 11:11:35 +0200
+Subject: [PATCH] kvx: remove legacy syscalls
+
+---
+ arch/kvx/bits/syscall.h.in | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/arch/kvx/bits/syscall.h.in b/arch/kvx/bits/syscall.h.in
+index 233d7383..d3c3a418 100644
+--- a/arch/kvx/bits/syscall.h.in
++++ b/arch/kvx/bits/syscall.h.in
+@@ -36,7 +36,6 @@
+ #define __NR_unlinkat 35
+ #define __NR_symlinkat 36
+ #define __NR_linkat 37
+-#define __NR_renameat 38
+ #define __NR_umount2 39
+ #define __NR_mount 40
+ #define __NR_pivot_root 41
+@@ -77,8 +76,6 @@
+ #define __NR_splice 76
+ #define __NR_tee 77
+ #define __NR_readlinkat 78
+-#define __NR_fstatat 79
+-#define __NR_fstat 80
+ #define __NR_sync 81
+ #define __NR_fsync 82
+ #define __NR_fdatasync 83
+@@ -162,8 +159,6 @@
+ #define __NR_uname 160
+ #define __NR_sethostname 161
+ #define __NR_setdomainname 162
+-#define __NR_getrlimit 163
+-#define __NR_setrlimit 164
+ #define __NR_getrusage 165
+ #define __NR_umask 166
+ #define __NR_prctl 167
+-- 
+2.17.1
+
