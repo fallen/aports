@@ -1,0 +1,102 @@
+From aace6429cee173ac9dd69fc932765b5df4d7cb62 Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Fri, 21 Jul 2023 13:39:22 +0200
+Subject: [PATCH] kvx: allow Alpine build system to build the kernel
+
+---
+ arch/kvx/Makefile        |  4 ++-
+ arch/kvx/boot/install.sh | 60 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 63 insertions(+), 1 deletion(-)
+ create mode 100644 arch/kvx/boot/install.sh
+
+diff --git a/arch/kvx/Makefile b/arch/kvx/Makefile
+index e3f3da7ff3f8..985fe8cfe6ac 100644
+--- a/arch/kvx/Makefile
++++ b/arch/kvx/Makefile
+@@ -23,6 +23,7 @@ KBUILD_AFLAGS += $(DEFAULT_OPTS)
+ KBUILD_CFLAGS_MODULE += -mfarcall
+ 
+ KBUILD_LDFLAGS += -m elf64kvx
++boot	:= arch/kvx/boot
+ 
+ head-y	:= arch/kvx/kernel/head.o
+ libs-y 	+= $(LIBGCC)
+@@ -39,7 +40,8 @@ $(BOOT_TARGETS): vmlinux
+ 	$(Q)$(MAKE) $(build)=$(boot) $(boot)/$@
+ 
+ install:
+-	$(Q)$(MAKE) $(build)=$(boot) BOOTIMAGE=$(KBUILD_IMAGE) install
++	$(CONFIG_SHELL) $(srctree)/$(boot)/install.sh $(KERNELRELEASE) \
++	vmlinux System.map "$(INSTALL_PATH)"
+ 
+ define archhelp
+ 	echo  '* bImage         - Alias to selected kernel format (bImage.gz by default)'
+diff --git a/arch/kvx/boot/install.sh b/arch/kvx/boot/install.sh
+new file mode 100644
+index 000000000000..18c39159c0ff
+--- /dev/null
++++ b/arch/kvx/boot/install.sh
+@@ -0,0 +1,60 @@
++#!/bin/sh
++#
++# arch/riscv/boot/install.sh
++#
++# This file is subject to the terms and conditions of the GNU General Public
++# License.  See the file "COPYING" in the main directory of this archive
++# for more details.
++#
++# Copyright (C) 1995 by Linus Torvalds
++#
++# Adapted from code in arch/i386/boot/Makefile by H. Peter Anvin
++# Adapted from code in arch/i386/boot/install.sh by Russell King
++#
++# "make install" script for the RISC-V Linux port
++#
++# Arguments:
++#   $1 - kernel version
++#   $2 - kernel image file
++#   $3 - kernel map file
++#   $4 - default install path (blank if root directory)
++#
++
++verify () {
++	if [ ! -f "$1" ]; then
++		echo ""                                                   1>&2
++		echo " *** Missing file: $1"                              1>&2
++		echo ' *** You need to run "make" before "make install".' 1>&2
++		echo ""                                                   1>&2
++		exit 1
++	fi
++}
++
++# Make sure the files actually exist
++verify "$2"
++verify "$3"
++
++# User may have a custom install script
++if [ -x ~/bin/${INSTALLKERNEL} ]; then exec ~/bin/${INSTALLKERNEL} "$@"; fi
++if [ -x /sbin/${INSTALLKERNEL} ]; then exec /sbin/${INSTALLKERNEL} "$@"; fi
++
++if [ "$(basename $2)" = "Image.gz" ]; then
++# Compressed install
++  echo "Installing compressed kernel"
++  base=vmlinuz
++else
++# Normal install
++  echo "Installing normal kernel"
++  base=vmlinux
++fi
++
++if [ -f $4/$base-$1 ]; then
++  mv $4/$base-$1 $4/$base-$1.old
++fi
++cat $2 > $4/$base-$1
++
++# Install system map file
++if [ -f $4/System.map-$1 ]; then
++  mv $4/System.map-$1 $4/System.map-$1.old
++fi
++cp $3 $4/System.map-$1
+-- 
+2.17.1
+
