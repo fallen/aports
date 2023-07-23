@@ -124,15 +124,15 @@ for PKG in fortify-headers linux-headers musl libc-dev pkgconf zlib \
 	   gmp mpfr4 mpc1 isl26 libucontext binutils gcc \
 	   libbsd busybox make \
 	   apk-tools file \
-	   libcap openrc alpine-conf alpine-baselayout alpine-keys alpine-base patch build-base \
+	   libcap openrc mdev-conf alpine-conf alpine-baselayout alpine-keys alpine-base patch build-base \
 	   attr acl fakeroot tar \
 	   lzip abuild ncurses libedit openssh \
 	   libcap-ng util-linux libaio lvm2 popt xz \
 	   json-c argon2 cryptsetup kmod lddtree mkinitfs \
 	   libffi \
-	   brotli libev c-ares cunit nghttp2 curl \
+	   brotli libev c-ares cunit nghttp2 libidn2 curl \
 	   libssh2 \
-	   libxml2 pax-utils llvm14 community/ghc llvm16 community/rust \
+	   libxml2 pax-utils community/ghc \
 	   $KERNEL_PKG ; do
 
 	if [ "$NEEDS_LIBATOMIC" = "yes" ]; then
