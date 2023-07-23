@@ -26,6 +26,7 @@ prepare() {
 	default_prepare
 
 	CONFIG_SHELL=/bin/sh ./bootstrap
+	update_config_sub
 }
 
 build() {

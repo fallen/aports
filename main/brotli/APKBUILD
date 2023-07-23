@@ -34,6 +34,7 @@ prepare() {
 	default_prepare
 	sed -i 's,/usr/bin/env bash,/bin/sh,' tests/*.sh
 	sh ./bootstrap
+	update_config_sub
 }
 
 build() {

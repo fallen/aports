@@ -26,11 +26,11 @@ builddir="$srcdir/$pkgname-FILE${pkgver/./_}"
 
 prepare() {
 	default_prepare
+	SH_LIBTOOL='/usr/share/build-1/libtool' autoreconf -f -i
 	update_config_sub
 }
 
 build() {
-	SH_LIBTOOL='/usr/share/build-1/libtool' autoreconf -f -i
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \
