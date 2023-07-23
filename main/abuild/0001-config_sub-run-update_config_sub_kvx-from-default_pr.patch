@@ -1,0 +1,61 @@
+From 094af4272eda49cecd6a6fd090d8403aa5d1d258 Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Sun, 23 Jul 2023 13:37:47 +0200
+Subject: [PATCH] config_sub: run update_config_sub_kvx from default_prepare
+ and do not fail if no config.sub is found
+
+---
+ abuild.in | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/abuild.in b/abuild.in
+index 90e3440..6a33905 100644
+--- a/abuild.in
++++ b/abuild.in
+@@ -671,7 +671,7 @@ update_config_sub() {
+ 		else
+ 			msg "No update needed for $f"
+ 		fi
+-	done; $changed)
++	done)
+ }
+ 
+ # helper to update config.guess to a recent version
+@@ -727,6 +727,7 @@ default_prepare() {
+ 	local i failed=
+ 	[ -n "$builddir" -a -d "$builddir" ] && cd "$builddir"
+ 	if ! have_patches; then
++		update_config_sub_kvx
+ 		return 0
+ 	fi
+ 	[ -d "$builddir" ] || { error "Is \$builddir set correctly?"; return 1; }
+@@ -747,6 +748,7 @@ default_prepare() {
+ 		esac
+ 	done
+ 	if [ -z "$failed" ]; then
++		update_config_sub_kvx
+ 		return 0
+ 	fi
+ 	error "The following patches failed to apply:"
+@@ -756,6 +758,18 @@ default_prepare() {
+ 	return 1
+ }
+ 
++update_config_sub_kvx() {
++	find . -name config.sub | (local changed=false; while read f; do
++		if ! ./$f kvx-alpine-linux-musl 2>/dev/null; then
++			msg "Updating $f"
++			cp "$sharedir"/${f##*/} "$f" || return 1
++			changed=true
++		else
++			msg "No update needed for $f"
++		fi
++	done)
++}
++
+ prepare() {
+ 	default_prepare
+ }
+-- 
+2.34.1
+
