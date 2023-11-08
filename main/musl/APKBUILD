@@ -28,6 +28,7 @@ source="https://github.com/kalray/musl/archive/refs/tags/ACB-4.13.0-rc5.tar.gz
 	getent.c
 	iconv.c
 	0001-kvx-remove-legacy-syscalls.patch
+	0002-kvx-add-missing-dlsym-implementation.patch
 	"
 
 # secfixes:
@@ -151,4 +152,5 @@ a76f79b801497ad994746cf82bb6eaf86f9e1ae646e6819fbae8532a7f4eee53a96ac1d4e789ec8f
 7f5b9d934d82deb5f8b23e16169a5d9b99ccab3a4708df06a95d685e1b24a3a3e69b3dcf4942f2f66c12a3d4bf0c5827e2ee2e8c4d7b1997359fccc2ac212dee  getent.c
 9d42d66fb1facce2b85dad919be5be819ee290bd26ca2db00982b2f8e055a0196290a008711cbe2b18ec9eee8d2270e3b3a4692c5a1b807013baa5c2b70a2bbf  iconv.c
 bfaead4346687bdfb03d965893418bbe629ba8393a264a9429334f5c08b7f3e324af4913c942f7c20adb3a5ccc4fe4fe5bd16130f81998554d0004c76d5fc721  0001-kvx-remove-legacy-syscalls.patch
+13055d60fabd705307c7d1487c48f4776f429cd60f830f017c56e8926e8cdd6a9bdd22a9d49f84fbecf7c44205bf203d2aaa8e2c3081a5a68a8b0cd9c41b2332  0002-kvx-add-missing-dlsym-implementation.patch
 "

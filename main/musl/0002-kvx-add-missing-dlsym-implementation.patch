@@ -1,0 +1,27 @@
+From 3109fbd25e88c2f7e3a83a3b0d62cf26df20912f Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <yann@sionneau.net>
+Date: Wed, 8 Nov 2023 15:25:50 +0100
+Subject: [PATCH] kvx: add missing dlsym implementation
+
+---
+ src/ldso/kvx/dlsym.s | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ create mode 100644 src/ldso/kvx/dlsym.s
+
+diff --git a/src/ldso/kvx/dlsym.s b/src/ldso/kvx/dlsym.s
+new file mode 100644
+index 00000000..6cb53fcd
+--- /dev/null
++++ b/src/ldso/kvx/dlsym.s
+@@ -0,0 +1,8 @@
++.global dlsym
++.hidden __dlsym
++.type   dlsym,@function
++dlsym:
++	get $r2 = $ra
++	;;
++	goto __dlsym
++	;;
+-- 
+2.42.0
+
