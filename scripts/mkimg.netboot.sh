@@ -12,7 +12,7 @@ profile_netboot() {
 	desc="Kernel, initramfs and modloop for
 		netboot.
 		"
-	arch="aarch64 armhf armv7 ppc64le x86 x86_64 s390x"
+	arch="aarch64 armhf armv7 ppc64le x86 x86_64 s390x kvx"
 	case "$ARCH" in
 		aarch64) kernel_flavors="lts rpi rpi4 virt";;
 		armhf) kernel_flavors="rpi rpi2";;
